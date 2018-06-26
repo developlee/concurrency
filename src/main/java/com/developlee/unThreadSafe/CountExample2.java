@@ -1,6 +1,6 @@
-package com.developlee.UnThreadSafe;
+package com.developlee.unThreadSafe;
 
-import com.developlee.annotations.ThreadUnsafe;
+import com.developlee.annotations.ThreadSafe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,12 +8,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
- * Created by Leson on 2018/6/22.
+ * Created by Leson on 2018/6/23.
  */
-@ThreadUnsafe(value = "线程不安全的写法")
-public class ConcurrencyTest {
+@ThreadSafe
+public class CountExample2 {
 
     private static final Logger logger = LoggerFactory.getLogger(ConcurrencyTest.class);
 
@@ -23,7 +24,8 @@ public class ConcurrencyTest {
     //同时并发执行的线程总数
     public static int threadTotal = 200;
 
-    public static int count = 0;
+    //public static AtomicLong count = new AtomicLong(0)
+    public static LongAdder count = new LongAdder();
 
     public static void main(String args[]) throws InterruptedException {
         //新建一个线程池
@@ -47,11 +49,11 @@ public class ConcurrencyTest {
         }
         countDownLatch.await();
         executorService.shutdown(); //关闭
-       logger.info("count{}", count);
+        logger.info("count{}", count);
 
     }
 
     private static void add(){
-        count++;
+        count.increment();
     }
 }

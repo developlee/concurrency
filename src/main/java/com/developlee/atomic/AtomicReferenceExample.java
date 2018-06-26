@@ -1,4 +1,4 @@
-package com.developlee.UnThreadSafe;
+package com.developlee.atomic;
 
 import com.developlee.annotations.ThreadSafe;
 

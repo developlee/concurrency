@@ -1,9 +1,8 @@
-package com.developlee.UnThreadSafe;
+package com.developlee.atomic;
 
 import com.developlee.annotations.ThreadSafe;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
  * Created by Leson on 2018/6/23.

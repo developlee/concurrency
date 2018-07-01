@@ -1,7 +1,6 @@
 package com.developlee.singleton;
 
 import com.developlee.annotations.ThreadSafe;
-import com.developlee.annotations.ThreadUnsafe;
 import com.developlee.annotations.UnRecommend;
 
 /**

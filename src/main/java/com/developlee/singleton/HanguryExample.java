@@ -1,7 +1,6 @@
 package com.developlee.singleton;
 
 import com.developlee.annotations.ThreadSafe;
-import com.developlee.annotations.ThreadUnsafe;
 
 /**
  * 饿汉模式： 考虑两个因素：1. 饿汉模式创建单例，私有函数不能做过多操作，否则带来性能问题，

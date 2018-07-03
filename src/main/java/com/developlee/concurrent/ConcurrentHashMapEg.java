@@ -1,4 +1,4 @@
-package com.developlee.syncContainer;
+package com.developlee.concurrent;
 
 import com.developlee.annotations.ThreadSafe;
 import com.developlee.annotations.ThreadUnsafe;
@@ -6,25 +6,19 @@ import com.developlee.unThreadSafe.ConcurrencyTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * Created by Leson on 2018/7/1.
  */
 @ThreadSafe
-public class CollectionEg1 {
-
+public class ConcurrentHashMapEg {
     private final static Logger logger = LoggerFactory.getLogger(ConcurrencyTest.class);
 
-    private static List<Integer> list = Collections.synchronizedList(new ArrayList());
-    //set, map 类似
-    private static Set<Integer> set = Collections.synchronizedSet(new HashSet<>());
+    private static Map<Integer, Integer> map = new ConcurrentHashMap<>();
 
-    private static Map<Integer,Integer> map = Collections.synchronizedMap(new HashMap<>());
     //请求总数
     public static int clientTotal = 5000;
 
@@ -41,7 +35,7 @@ public class CollectionEg1 {
         for (int i = 0; i < clientTotal; i++) {
             //请求放入线程池内
             final int count = i;
-            executorService.execute(() ->{
+            executorService.execute(() -> {
                 try {
                     semaphore.acquire();//引入信号量
                     update(count);
@@ -54,10 +48,10 @@ public class CollectionEg1 {
         }
         countDownLatch.await();
         executorService.shutdown(); //关闭
-        logger.info("size {}",list.size());
+        logger.info("size {}", map.size());
     }
 
-    private static void update(int i){
-       list.add(i);
+    private static void update(int i) {
+        map.put(i, i);
     }
 }

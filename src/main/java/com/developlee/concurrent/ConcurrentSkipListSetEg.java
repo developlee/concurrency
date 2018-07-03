@@ -1,30 +1,22 @@
-package com.developlee.syncContainer;
+package com.developlee.concurrent;
 
 import com.developlee.annotations.ThreadSafe;
-import com.developlee.annotations.ThreadUnsafe;
-import com.developlee.unThreadSafe.ConcurrencyTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.Set;
+import java.util.concurrent.*;
 
 /**
- * Created by Leson on 2018/7/1.
+ * Created by Leson on 2018/7/1. 使用removeAll, addAll 要注意自己做同步
  */
 @ThreadSafe
-public class CollectionEg1 {
+public class ConcurrentSkipListSetEg {
 
-    private final static Logger logger = LoggerFactory.getLogger(ConcurrencyTest.class);
+    private final static Logger logger = LoggerFactory.getLogger(ConcurrentSkipListSetEg.class);
 
-    private static List<Integer> list = Collections.synchronizedList(new ArrayList());
-    //set, map 类似
-    private static Set<Integer> set = Collections.synchronizedSet(new HashSet<>());
+    private static Set<Integer> list = new ConcurrentSkipListSet<>();
 
-    private static Map<Integer,Integer> map = Collections.synchronizedMap(new HashMap<>());
     //请求总数
     public static int clientTotal = 5000;
 

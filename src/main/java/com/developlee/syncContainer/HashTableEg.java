@@ -1,4 +1,4 @@
-package com.developlee.collections;
+package com.developlee.syncContainer;
 
 import com.developlee.annotations.ThreadUnsafe;
 import com.developlee.unThreadSafe.ConcurrencyTest;
@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -16,10 +17,10 @@ import java.util.concurrent.Semaphore;
  * Created by Leson on 2018/7/1.
  */
 @ThreadUnsafe
-public class HashMapEg {
+public class HashTableEg {
     private final static Logger logger = LoggerFactory.getLogger(ConcurrencyTest.class);
 
-    private static Map<Integer, Integer> map = new HashMap<>();
+    private static Map<Integer, Integer> map = new Hashtable<>();
 
     //请求总数
     public static int clientTotal = 5000;

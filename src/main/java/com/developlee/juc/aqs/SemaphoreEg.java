@@ -1,4 +1,4 @@
-package com.developlee.aqs;
+package com.developlee.juc.aqs;
 
 import com.developlee.annotations.ThreadSafe;
 import org.slf4j.Logger;

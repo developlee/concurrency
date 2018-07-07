@@ -1,4 +1,4 @@
-package com.developlee.aqs.locks;
+package com.developlee.juc.aqs.locks;
 
 import com.developlee.unThreadSafe.ConcurrencyTest;
 import org.slf4j.Logger;

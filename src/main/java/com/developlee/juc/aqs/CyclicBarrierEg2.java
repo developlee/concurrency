@@ -1,4 +1,4 @@
-package com.developlee.aqs;
+package com.developlee.juc.aqs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

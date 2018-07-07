@@ -1,10 +1,9 @@
-package com.developlee.aqs.locks;
+package com.developlee.juc.aqs.locks;
 
 import com.developlee.unThreadSafe.ConcurrencyTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
